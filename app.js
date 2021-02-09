@@ -3,8 +3,8 @@
 const Task = props => {
     return(
         <li>
-            {props.content} 
-            <button className="deleteButton" onClick={props.delete}>Usuń</button> 
+        <i onClick={props.delete} class="fas fa-check-circle"></i>
+        {props.content} 
         </li>
     )
 }
@@ -13,8 +13,8 @@ const Task = props => {
 const AddInput = props => {
     return(
         <div className="inputWrapper">
-            <input type="text" placeholder="Dodaj zadanie" onChange={props.onChange}/>
-            <button  className="inputButton" onClick={props.addTask}><span>Dodaj</span></button>
+            <input type="text" placeholder="Add task" onChange={props.onChange}/>
+            <i onClick={props.addTask} class="fas fa-plus"></i>
         </div>
     )
 }
@@ -52,6 +52,9 @@ class List extends React.Component{
         return(
             <>
                 <AddInput addTask={this.addTask} onChange={this.handleChange} value={inputValue}/>
+                <div className="nameWrapper">
+                    <h1>To-do List App</h1>
+                </div>
                 <ul>
                     {tasks.map(task => (
                         <Task key={task.id} content={task.task} delete={this.handleDelete.bind(this, task.id)}/>
