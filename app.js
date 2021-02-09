@@ -3,7 +3,7 @@
 const Task = props => {
     return(
         <li>
-        <i onClick={props.delete} class="fas fa-check-circle"></i>
+        <i onClick={props.delete} className="fas fa-check-circle"></i>
         {props.content} 
         </li>
     )
@@ -14,7 +14,7 @@ const AddInput = props => {
     return(
         <div className="inputWrapper">
             <input type="text" placeholder="Add task" onChange={props.onChange}/>
-            <i onClick={props.addTask} class="fas fa-plus"></i>
+            <i onClick={props.addTask} className="fas fa-plus"></i>
         </div>
     )
 }
