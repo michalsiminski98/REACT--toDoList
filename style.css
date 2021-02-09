@@ -20,19 +20,32 @@ button {
   justify-content: center;
   align-content: center;
   padding: 10px 0;
+  height: 35px;
   width: 100vw;
   background-color: #ececec;
 }
 
-input {
+.inputWrapper > p {
+  margin: 0 7px;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.addInput {
   padding: 5px 20px;
   width: 250px;
   height: 25px;
   font-size: 20px;
   background-color: #16a8f4;
   color: white;
-  border: 1px solid #424242;
+  border: 1px solid #585858;
   border-radius: 20px;
+}
+
+.timeInput {
+  border-radius: 5px;
+  border: 1px solid #585858;
+  margin: 0 5px;
 }
 
 .fa-plus {

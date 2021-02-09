@@ -13,7 +13,11 @@ const Task = props => {
 const AddInput = props => {
     return(
         <div className="inputWrapper">
-            <input type="text" placeholder="Add task" onChange={props.onChange}/>
+            <input className="addInput" type="text" placeholder="Add task" onChange={props.onChange}/>
+            <p>from</p>
+            <input type="time" className="timeInput" onChange={props.timeStart}></input>
+            <p>to</p>
+            <input type="time" className="timeInput" onChange={props.timeStop}></input>
             <i onClick={props.addTask} className="fas fa-plus"></i>
         </div>
     )
@@ -25,6 +29,8 @@ class List extends React.Component{
     state={
         id:0,
         inputValue: '',
+        timeStart: '',
+        timeStop: '',
         tasks:[]
     }
 
@@ -34,10 +40,23 @@ class List extends React.Component{
       }
 
     addTask = () => {
+        if(!this.state.inputValue){
+            return alert('You did not add task :)')
+        }
+        if(!this.state.timeStart || !this.state.timeStop){
+            return alert('You did not add time :)')
+        }
         const tasks = this.state.tasks;
-        tasks.push({id:this.state.id,task:this.state.inputValue});
+        tasks.push({id:this.state.id,task:`${this.state.inputValue} ${this.state.timeStart} - ${this.state.timeStop}`});
         this.setState({tasks, id: this.state.id + 1});
     }
+
+    handleTimeStart = (e) => {
+        this.setState({timeStart: e.target.value});
+      }
+      handleTimeStop = (e) => {
+        this.setState({timeStop: e.target.value});
+      }
 
     //  delete
     handleDelete(id) {
@@ -51,7 +70,7 @@ class List extends React.Component{
         const {tasks, inputValue} = this.state;
         return(
             <>
-                <AddInput addTask={this.addTask} onChange={this.handleChange} value={inputValue}/>
+                <AddInput addTask={this.addTask} onChange={this.handleChange} value={inputValue} timeStart={this.handleTimeStart} timeStop={this.handleTimeStop}/>
                 <div className="nameWrapper">
                     <h1>To-do List App</h1>
                 </div>
