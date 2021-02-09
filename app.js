@@ -23,9 +23,9 @@ const AddInput = props => {
 class List extends React.Component{
 
     state={
+        id:0,
         inputValue: '',
-        tasks:[
-        ]
+        tasks:[]
     }
 
     //  input functions   
@@ -35,9 +35,8 @@ class List extends React.Component{
 
     addTask = () => {
         const tasks = this.state.tasks;
-        const id = this.state.tasks.length;
-        tasks.push({id:id,task:this.state.inputValue})
-        this.setState({tasks})
+        tasks.push({id:this.state.id,task:this.state.inputValue});
+        this.setState({tasks, id: this.state.id + 1});
     }
 
     //  delete
