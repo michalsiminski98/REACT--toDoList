@@ -1,0 +1,95 @@
+body {
+  background-color: #0d1117;
+  font-family: arial;
+}
+button {
+  cursor: pointer;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+}
+
+input {
+  padding: 5px 20px;
+  width: 250px;
+  height: 25px;
+  font-size: 20px;
+  background-color: #d65e40;
+  color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.inputButton {
+  position: relative;
+  width: 70px;
+  height: 37px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+span {
+  position: relative;
+  z-index: 1;
+}
+
+.inputButton::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  line-height: 30px;
+  display: block;
+  background-color: #d65e40;
+  width: 100%;
+  height: 100%;
+  transform: translateX(101%);
+  transition: 0.2s;
+}
+span {
+  transition: 0.2s;
+}
+::placeholder {
+  color: white;
+}
+
+.inputButton:hover::after {
+  transform: translateX(0%);
+}
+.inputButton:hover {
+  color: white;
+}
+ul {
+  width: 50%;
+  margin: 100px auto;
+  min-height: 700px;
+  border-radius: 20px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: #d65e40;
+}
+li {
+  color: white;
+  font-size: 22px;
+  margin-top: 10px;
+  flex-basis: 100%;
+}
+.deleteButton {
+  padding: 5px 5px;
+  margin-left: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: 0.1s;
+}
+.deleteButton:hover {
+  color: #d65e40;
+}
