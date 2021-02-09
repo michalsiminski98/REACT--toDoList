@@ -10,30 +10,37 @@ const Task = props => {
 }
 
 // add task
-const AddTask = props => {
+const AddInput = props => {
     return(
         <>
-            <input type="text" placeholder="Dodaj zadanie"/>
-            <button>Dodaj</button>
+            <input type="text" placeholder="Dodaj zadanie" onChange={props.onChange}/>
+            <button onClick={props.addTask}>Dodaj</button>
         </>
     )
 }
-
-
-
-
 
 // list
 class List extends React.Component{
 
     state={
+        inputValue: '',
         tasks:[
-            {id:0, task:'Sprzatnac'},
-            {id:1, task:'Umyc'},
-            {id:2, task:'Spac'},
         ]
     }
 
+    //  input functions   
+    handleChange = (e) => {
+        this.setState({inputValue: e.target.value});
+      }
+
+    addTask = () => {
+        const tasks = this.state.tasks;
+        const id = this.state.tasks.length;
+        tasks.push({id:id,task:this.state.inputValue})
+        this.setState({tasks})
+    }
+
+    //  delete
     handleDelete(id) {
         const tasks = [...this.state.tasks];
         const index = this.state.tasks.findIndex(person => person.id === id);
@@ -42,10 +49,10 @@ class List extends React.Component{
     }
 
     render(){
-        const {tasks} = this.state;
+        const {tasks, inputValue} = this.state;
         return(
             <>
-                <AddTask/>
+                <AddInput addTask={this.addTask} onChange={this.handleChange} value={inputValue}/>
                 <ul>
                     {tasks.map(task => (
                         <Task key={task.id} content={task.task} delete={this.handleDelete.bind(this, task.id)}/>
